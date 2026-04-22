@@ -1,0 +1,31 @@
+{
+  "title": "Input schema for Terms of Service Watchdog",
+  "description": "Enter the old and new URLs of the Terms of Service pages to compare, along with your OpenAI API key. The Actor will analyze changes and assess legal risks.",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "old_url": {
+      "title": "Old URL",
+      "type": "string",
+      "description": "URL of the old/previous version of the Terms of Service to compare",
+      "editor": "textfield",
+      "prefill": "https://web.archive.org/web/20230727142055/https://explore.zoom.us/en/terms/"
+    },
+    "new_url": {
+      "title": "New URL",
+      "type": "string",
+      "description": "URL of the new/current version of the Terms of Service to compare",
+      "editor": "textfield",
+      "prefill": "https://explore.zoom.us/en/terms/"
+    },
+    "openai_api_key": {
+      "title": "OpenAI API Key",
+      "type": "string",
+      "description": "OpenAI API key for GPT-4o-mini analysis. This key is used to analyze legal risks in the Terms of Service changes. Keep this key secure and do not share it publicly.",
+      "editor": "textfield",
+      "prefill": "sk-placeholder-for-testing"
+    }
+  },
+  "required": ["old_url", "new_url", "openai_api_key"]
+}
+

@@ -1,0 +1,43 @@
+{
+  "actorSpecification": 1,
+  "name": "tos-watchdog",
+  "title": "Terms of Service Watchdog",
+  "description": "Compares two Terms of Service URLs (old vs new) and uses AI to analyze legal risk of changes",
+  "version": "1.0",
+  "meta": {
+    "templateId": "python-start"
+  },
+  "input": {
+    "title": "ToS Watchdog Input",
+    "type": "object",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "old_url": {
+          "title": "Old URL",
+          "type": "string",
+          "description": "URL of the old/previous version of the Terms of Service to compare",
+          "editor": "textField"
+        },
+        "new_url": {
+          "title": "New URL",
+          "type": "string",
+          "description": "URL of the new/current version of the Terms of Service to compare",
+          "editor": "textField"
+        },
+        "openai_api_key": {
+          "title": "OpenAI API Key",
+          "type": "string",
+          "description": "OpenAI API key for GPT-4o-mini analysis",
+          "editor": "textField",
+          "secret": true
+        }
+      },
+      "required": ["old_url", "new_url", "openai_api_key"]
+    }
+  },
+  "storages": {
+    "dataset": "./storage/datasets/default",
+    "keyValueStore": "./storage/key_value_stores/default"
+  }
+}

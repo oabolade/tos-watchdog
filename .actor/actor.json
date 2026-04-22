@@ -1,0 +1,93 @@
+{
+  "actorSpecification": 1,
+  "name": "tos-watchdog",
+  "title": "Terms of Service Watchdog",
+  "description": "Compares two Terms of Service URLs (old vs new) and uses AI to analyze legal risk of changes",
+  "version": "1.0",
+  "input": "./INPUT_SCHEMA.json",
+  "output": "./output_schema.json",
+  "storages": {
+    "dataset": {
+      "actorSpecification": 1,
+      "fields": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "old_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL of the old/previous version of the Terms of Service"
+          },
+          "new_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL of the new/current version of the Terms of Service"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["CHANGED", "UNCHANGED", "ERROR"],
+            "description": "Whether changes were detected between the old and new versions"
+          },
+          "risk_level": {
+            "type": "string",
+            "description": "Risk level with category, e.g. HIGH (Data Privacy), MEDIUM (Billing), LOW (General), NONE"
+          },
+          "analysis": {
+            "type": "string",
+            "description": "AI-generated analysis of legal risks and implications of the detected changes"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "description": "ISO timestamp of when the comparison was performed"
+          }
+        },
+        "required": ["old_url", "new_url", "status", "risk_level", "analysis", "timestamp"]
+      },
+      "views": {
+        "overview": {
+          "title": "Overview",
+          "transformation": {
+            "fields": [
+              "status",
+              "risk_level",
+              "analysis",
+              "old_url",
+              "new_url",
+              "timestamp"
+            ]
+          },
+          "display": {
+            "component": "table",
+            "properties": {
+              "status": {
+                "label": "Status",
+                "format": "text"
+              },
+              "risk_level": {
+                "label": "Risk Level",
+                "format": "text"
+              },
+              "analysis": {
+                "label": "Analysis",
+                "format": "text"
+              },
+              "old_url": {
+                "label": "Old URL",
+                "format": "uri"
+              },
+              "new_url": {
+                "label": "New URL",
+                "format": "uri"
+              },
+              "timestamp": {
+                "label": "Timestamp",
+                "format": "date-time"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

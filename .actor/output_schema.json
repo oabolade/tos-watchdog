@@ -1,0 +1,21 @@
+{
+  "actorOutputSchemaVersion": 1,
+  "title": "Terms of Service Comparison Results",
+  "description": "Output schema for Terms of Service Watchdog Actor. Results are stored in the default dataset containing comparison analysis between old and new ToS versions.",
+  "properties": {
+    "results": {
+      "type": "string",
+      "title": "Comparison Results",
+      "description": "Complete comparison results including risk analysis",
+      "template": "{{links.apiDefaultDatasetUrl}}/items"
+    },
+    "overview": {
+      "type": "string",
+      "title": "Overview",
+      "description": "Overview view of comparison results",
+      "template": "{{links.apiDefaultDatasetUrl}}/items?view=overview"
+    }
+  }
+}
+
+
