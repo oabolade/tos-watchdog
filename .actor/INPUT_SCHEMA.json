@@ -23,6 +23,7 @@
       "type": "string",
       "description": "OpenAI API key for GPT-4o-mini analysis. This key is used to analyze legal risks in the Terms of Service changes. Keep this key secure and do not share it publicly.",
       "editor": "textfield",
+      "isSecret": "true",
       "prefill": "sk-placeholder-for-testing"
     }
   },
